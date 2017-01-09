@@ -1,0 +1,103 @@
+<form name="dataForm1" novalidate ng-submit="submitDialogForm(dataForm1.$valid)">
+    <div class="modal-header">
+        <span class="caption-subject bold uppercase h4">购买资源包</span>
+    </div>
+    <div class="modal-body form-horizontal form">
+        <div class="b-a">
+            <div class="row" style="margin-left: 0 !important;margin-right: 0 !important;height: 325px;">
+                <div class="col-md-8 wrapper-sm">
+
+                    <div class="ui">
+                        <div class="wrapper-md">
+
+                            <div class="form-group row">
+                                <div class="wrap-title col-md-2">可用区:</div>
+                                <div class="form-control1 col-md-5">
+
+                                    <ui-select ng-model="formdata.area" theme="bootstrap">
+                                        <ui-select-match placeholder="请选择">{{$select.selected.label}}</ui-select-match>
+                                        <ui-select-choices
+                                                repeat="item in fields">
+                                            <div ng-bind-html="item.label"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="wrap-title col-md-2">类型:</div>
+                                <div class="form-control1 col-md-10">
+                                    <div class="btn-group">
+                                        <label class="btn btn-default" ng-model="formdata.type" btn-radio="'性能型'">性能型</label>
+                                        <label class="btn btn-default" ng-model="formdata.type" btn-radio="'容量型'">容量型</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="wrap-title col-md-2">购买时长:</div>
+                                <div class="form-control1 col-md-6">
+                                    <rzslider rz-slider-model="slider_visible_bar_month.value" rz-slider-options="slider_visible_bar_month.options"></rzslider>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="wrap-title col-md-2">容量:</div>
+                                <div class="form-control1 col-md-6">
+                                    <rzslider rz-slider-model="slider_visible_bar_mem.value" rz-slider-options="slider_visible_bar_mem.options"></rzslider>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="clearfix numberComponent" style="margin-top: 5px;margin-left: -5px;">
+                                        <input type="text" ng-disabled="slider_visible_bar_mem.value >= 1000 || slider_visible_bar_mem.value <= 0" class="form-control" ng-model="slider_visible_bar_mem.value" style="width: 55px;height: 35px;"/>
+                                        <div class="plusMinus">
+                                            <button type="button" ng-disabled="slider_visible_bar_mem.value >= 1000" ng-click="slider_visible_bar_mem.value=slider_visible_bar_mem.value+5">
+                                                <i class="fa fa-caret-up"></i>
+                                            </button>
+                                            <button type="button" ng-disabled="slider_visible_bar_mem.value <= 0" ng-click="slider_visible_bar_mem.value=slider_visible_bar_mem.value-5">
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 wrapper-sm h-full" style="border-left: 1px solid #dee5e7;">
+                    <h4 class="right-title">当前选购配置</h4>
+                    <ul class="bk-items-list">
+                        <li>
+                            <span class="bk-item-name">可用区域:</span><span>{{formdata.area.label}}</span>
+                        </li>
+                        <li>
+                            <span class="bk-item-name">类型:</span><span>{{formdata.type}}</span>
+                        </li>
+                        <li>
+                            <span class="bk-item-name">时长:</span><span>{{slider_visible_bar_month.value}}个月</span>
+                        </li>
+                        <li>
+                            <span class="bk-item-name">容量:</span><span>{{slider_visible_bar_mem.value}}GB</span>
+                        </li>
+                    </ul>
+                    <div class="bk-items-price">
+                        <h4 class="right-title">本次需付费:</h4>
+                        <div class="price-settle">
+                            <span>¥</span>
+                            <span>327.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="ui basic buttons">
+            <button type="button" class="btn btn-default pull-left m-r-sm" ng-click="cancel()">取消</button>
+            <button type="button" class="btn btn-blue pull-right m-l-sm">确认</button>
+        </div>
+    </div>
+</form>

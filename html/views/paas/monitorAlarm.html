@@ -1,0 +1,82 @@
+<div class="bg-light lter b-b wrapper-md clearfix titleBtns">
+    <h2 class="m-n font-thin h4 pull-left">数据库 > Mysql > 监控与报警</h2>
+</div>
+
+<div class="wrapper-md">
+    <div class="panel panel-default form-horizontal form" role="form">
+        <div class="panel-heading">
+            <i class="fa fa-plus"></i>历史监控数据
+        </div>
+        <div class="panel-body">
+            <div class="row wrapper">
+                <form name="dataForm" novalidate class="form-horizontal form">
+                    <div class="form-group row">
+                        <label class="wrap-title col-md-1 control-label">数据指标:</label>
+                        <div class="form-control1 col-md-8">
+                            <div class="wrap">
+                                <span>
+                                    <input type="radio" id="radio_1" name="region" class="chk_1 ajust" value="1G" ng-model="data.neicun" ng-click="switchTab()"/>
+                                    <label for="radio_1">Keys</label>
+                                </span>
+                                 <span>
+                                    <input type="radio" id="radio_2" name="region" class="chk_1 ajust" value="2G" ng-model="data.neicun" ng-click="switchTab()"/>
+                                    <label for="radio_2">Expires</label>
+                                 </span>
+                                  <span>
+                                    <input type="radio" id="radio_3" name="region" class="chk_1 ajust" value="4G" ng-model="data.neicun"/>
+                                    <label for="radio_3">UsedMemory</label>
+                                 </span>
+                                 <span>
+                                    <input type="radio" id="radio_4" name="region" class="chk_1 ajust" value="8G" ng-model="data.neicun"/>
+                                    <label for="radio_4">InFlow</label>
+                                 </span>
+                                 <span>
+                                    <input type="radio" id="radio_5" name="region" class="chk_1 ajust" value="16G" ng-model="data.neicun"/>
+                                    <label for="radio_5">OutFlow</label>
+                                 </span>
+                                 <span>
+                                    <input type="radio" id="radio_6" name="region" class="chk_1 ajust" value="32G" ng-model="data.neicun"/>
+                                    <label for="radio_6">FailedCount</label>
+                                 </span>
+                                 <span>
+                                    <input type="radio" id="radio_7" name="region" class="chk_1 ajust" value="8G" ng-model="data.neicun"/>
+                                    <label for="radio_7">ComCount</label>
+                                 </span>
+                                 <span>
+                                    <input type="radio" id="radio_8" name="region" class="chk_1 ajust" value="16G" ng-model="data.neicun"/>
+                                    <label for="radio_8">TotalQps</label>
+                                 </span>
+                                 <span>
+                                    <input type="radio" id="radio_9" name="region" class="chk_1 ajust" value="32G" ng-model="data.neicun"/>
+                                    <label for="radio_9">+自定义监控项</label>
+                                 </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="wrap-title col-md-1 control-label">查询时间:</label>
+                        <div class="form-control1 input-group date col-md-4" style="padding-left: 15px;">
+                            <input date-range-picker class="form-control date-picker" type="text" placeholder="2016-01-01 / 12:00 AM - 2016-09-16 / 10:00 PM" ng-model="data.date" ng-init="data.date={startDate: null, endDate: null}"
+                                   max="maxDate" options="eventOpt"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="row">
+                <div e-chart ui-options="{{chartsOption}}" style="height: 400px;"></div>
+            </div>
+
+            <div class="row">
+                <div e-chart ui-options="{{chartsOption1}}" style="height: 400px;"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

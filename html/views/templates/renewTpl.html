@@ -1,0 +1,74 @@
+<form name="dataForm">
+    <div class="modal-body form-horizontal form">
+        <div class="form-body portlet light">
+            <div class="portlet-title clearfloat" style="padding-bottom:10px;border-bottom:1px solid #ececec;">
+                <div class="caption font-green-sharp" style="display:inline-block;float:left;">
+                    <span class="caption-subject bold uppercase">续费</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-body" style="padding:15px;">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <ul class="bk-items-list">
+                                    <li>
+                                        <span class="bk-item-name">配置:</span><span>北京 可用区A</span>
+                                    </li>
+                                    <li>
+                                        <span class="bk-item-name">版本:</span><span>5.5</span>
+                                    </li>
+                                    <li>
+                                        <span class="bk-item-name">存储:</span><span>100G</span>
+                                    </li>
+                                    <li>
+                                        <span class="bk-item-name">内存:</span><span>40G</span>
+                                    </li>
+                                    <li>
+                                        <span class="bk-item-name">时长:</span><span>6个月</span>
+                                    </li>
+                                    <li>
+                                        <span class="bk-item-name">购买量:</span><span>2台</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="form-group row">
+                                <div class="wrap-title col-md-2" style="line-height: 56px">申请时长</div>
+                                <div class="form-control1 col-md-9 m-l-n-md">
+                                    <ionslider type="single"
+                                               grid=true
+                                               min="month_slider.min"
+                                               max="month_slider.max"
+                                               from="month_slider.currentValue"
+                                               postfix="个月"
+                                               on-finish="month_slider.rangeFinishCallback"></ionslider>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="padding-left: 0">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    当前配置
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="bk-items-price">
+                                        <div class="price-title">配置费用:</div>
+                                        <div class="price-settle">
+                                            <span>¥</span>
+                                            <span>327.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="cancel()">关闭</button>
+        <button class="btn btn-dark" type="button" ng-click="subMonth()">确定</button>
+    </div>
+</form>

@@ -1,0 +1,244 @@
+<!-- navbar header -->
+<div class="navbar-header {{app.settings.navbarHeaderColor}} nx-logo">
+    <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
+        <i class="glyphicon glyphicon-cog"></i>
+    </button>
+    <button class="pull-right visible-xs" ui-toggle-class="off-screen" data-target=".app-aside" ui-scroll="app">
+        <i class="glyphicon glyphicon-align-justify"></i>
+    </button>
+    <!-- brand -->
+    <a href="#/" class="navbar-brand text-lt">
+        <!--<i class="fa fa-btc"></i>-->
+        <img src="../resources/img/logo16px.png" alt=".">
+        <span class="hidden-folded m-l-xs">新致云</span>
+    </a>
+    <!-- / brand -->
+</div>
+<!-- / navbar header -->
+
+<!-- navbar collapse -->
+<div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+    <!-- buttons -->
+    <div class="nav navbar-nav hidden-xs">
+        <a href class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
+            <i class="fa {{app.settings.asideFolded ? 'fa-indent' : 'fa-dedent'}} fa-fw"></i>
+        </a>
+    </div>
+    <!-- / buttons -->
+
+    <!-- link and dropdown -->
+    <ul class="nav navbar-nav hidden-sm nx-area">
+
+        <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+                <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
+                <i class="fa fa-fw fa-map-marker"></i>
+                <span>{{selectArea}}</span>
+                <!--<span class="caret"></span>-->
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <!--<li><a href="#">Projects</a></li>-->
+                <li ng-repeat="item in ['上海','北京','大连']">
+                    <a href ng-click="setArea(item)">
+                        <!--<span class="badge bg-info pull-right">5</span>-->
+                        <!--<i class="glyphicon glyphicon-calendar icon text-info-dker"></i>-->
+                        <span>{{item}}</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+    </ul>
+    <!-- / link and dropdown -->
+
+    <!-- nabar right -->
+    <ul class="nav navbar-nav navbar-right">
+
+        <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+                <i class="icon-list fa-fw"></i>
+                <span class="visible-xs-inline">任务列表</span>
+                <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
+            </a>
+            <!-- dropdown -->
+            <div class="dropdown-menu w-xl animated fadeInUp">
+                <div class="panel bg-white">
+                    <div class="panel-heading b-light bg-light">
+                        <strong>您当前有<span>2</span>个任务在运行</strong>
+                    </div>
+
+                    <div class="list-group" ui-jq="slimScroll" ui-options="{}" style="height: 250px;">
+                        <a href class="media list-group-item">
+                      <span class="task">
+                          <span class="desc"> v1.2 发布</span>
+                          <span class="percent pull-right">30%</span>
+                      </span>
+                            <div class="progress-xs progress">
+                          <span style="width: 30%;" class="progress-bar progress-bar-success" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                            <span class="sr-only">40% 完成</span>
+                          </span>
+                            </div>
+                        </a>
+
+                        <a href class="media list-group-item">
+                      <span class="task">
+                          <span class="desc"> v1.2 发布</span>
+                          <span class="percent pull-right">10%</span>
+                      </span>
+                            <div class="progress-xs progress">
+                          <span style="width: 10%;" class="progress-bar progress-bar-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                            <span class="sr-only">10% 完成</span>
+                          </span>
+                            </div>
+                        </a>
+
+                        <a href class="media list-group-item">
+                      <span class="task">
+                          <span class="desc"> v1.2 发布</span>
+                          <span class="percent pull-right">60%</span>
+                      </span>
+                            <div class="progress-xs progress">
+                          <span style="width: 60%;" class="progress-bar progress-bar-info" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                            <span class="sr-only">60% 完成</span>
+                          </span>
+                            </div>
+                        </a>
+
+                        <a href class="media list-group-item">
+                      <span class="task">
+                          <span class="desc"> v1.2 发布</span>
+                          <span class="percent pull-right">10%</span>
+                      </span>
+                            <div class="progress-xs progress">
+                          <span style="width: 10%;" class="progress-bar progress-bar-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                            <span class="sr-only">10% 完成</span>
+                          </span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="panel-footer text-sm">
+                        <a href class="pull-right"><i class="fa fa-cog"></i></a>
+                        <a href="#notes" data-toggle="class:show animated fadeInRight">查看所有任务</a>
+                    </div>
+                </div>
+            </div>
+            <!-- / dropdown -->
+        </li>
+
+        <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+                <i class="icon-bell fa-fw"></i>
+                <span class="visible-xs-inline">消息通知</span>
+                <span class="badge badge-sm up bg-danger pull-right-xs">4</span>
+            </a>
+            <!-- dropdown -->
+            <div class="dropdown-menu w-xl animated fadeInUp">
+                <div class="panel bg-white">
+                    <div class="panel-heading b-light bg-light">
+                        <strong>您有<span>2</span>条消息通知</strong>
+                    </div>
+                    <div class="list-group" ui-jq="slimScroll" ui-options="{}" style="height: 250px;">
+                        <a href class="media list-group-item">
+                    <span class="pull-left thumb-sm">
+                      <img src="../resources/img/b4.jpg" alt="..." class="img-circle">
+                    </span>
+                            <span class="media-body block m-b-none">
+                      Use awesome animate.css<br>
+                      <small class="text-muted">10 minutes ago</small>
+                    </span>
+                        </a>
+                        <a href class="media list-group-item">
+                    <span class="pull-left thumb-sm">
+                      <img src="../resources/img/b0.jpg" alt="..." class="img-circle">
+                    </span>
+                            <span class="media-body block m-b-none">
+                      1.0 initial released<br>
+                      <small class="text-muted">1 hour ago</small>
+                    </span>
+                        </a>
+                        <a href class="media list-group-item">
+                    <span class="pull-left thumb-sm">
+                      <img src="../resources/img/b1.jpg" alt="..." class="img-circle">
+                    </span>
+                            <span class="media-body block m-b-none">
+                      1.0 initial released<br>
+                      <small class="text-muted">1 hour ago</small>
+                    </span>
+                        </a>
+                        <a href class="media list-group-item">
+                    <span class="pull-left thumb-sm">
+                      <img src="../resources/img/b2.jpg" alt="..." class="img-circle">
+                    </span>
+                            <span class="media-body block m-b-none">
+                      1.0 initial released<br>
+                      <small class="text-muted">1 hour ago</small>
+                    </span>
+                        </a>
+                        <a href class="media list-group-item">
+                    <span class="pull-left thumb-sm">
+                      <img src="../resources/img/b3.jpg" alt="..." class="img-circle">
+                    </span>
+                            <span class="media-body block m-b-none">
+                      1.0 initial released<br>
+                      <small class="text-muted">1 hour ago</small>
+                    </span>
+                        </a>
+                        <a href class="media list-group-item">
+                    <span class="pull-left thumb-sm">
+                      <img src="../resources/img/b5.jpg" alt="..." class="img-circle">
+                    </span>
+                            <span class="media-body block m-b-none">
+                      1.0 initial released<br>
+                      <small class="text-muted">1 hour ago</small>
+                    </span>
+                        </a>
+                    </div>
+                    <div class="panel-footer text-sm">
+                        <a href class="pull-right"><i class="fa fa-cog"></i></a>
+                        <a href="#notes" data-toggle="class:show animated fadeInRight">查看所有消息通知</a>
+                    </div>
+                </div>
+            </div>
+            <!-- / dropdown -->
+        </li>
+
+
+        <li style="border-left: 1px solid #eee;border-right: 1px solid #eee;">
+            <a href="">
+                ¥47.00
+            </a>
+        </li>
+
+        <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle clear" dropdown-toggle>
+              <span class="thumb-sm avatar pull-left m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="../resources/img/a0.jpg" alt="...">
+                <!--<i class="on md b-white bottom"></i>-->
+              </span>
+              <span class="hidden-sm hidden-md">John.Wx</span>
+              <!--<b class="caret"></b>-->
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+
+                <li>
+                    <a ui-sref="paas.profile">个人资料</a>
+                </li>
+                <li>
+                    <a ui-sref="paas.docs">
+                        帮助中心
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a ui-sref="access.signin">退出登录</a>
+                </li>
+            </ul>
+            <!-- / dropdown -->
+        </li>
+    </ul>
+    <!-- / navbar right -->
+
+</div>
+<!-- / navbar collapse -->

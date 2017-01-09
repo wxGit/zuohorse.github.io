@@ -1,0 +1,209 @@
+<div class="bg-light lter b-b wrapper-md clearfix titleBtns w-p">
+    <h4 class="m-n font-thin pull-left">对象存储OSS > <span class="text-dark">{{bucketName}}</span> > Bucket属性 </h4>
+</div>
+
+<div class="wrapper-md">
+    <div class="clearfix">
+
+    </div>
+
+    <tabset class="tab-container">
+        <tab>
+            <tab-heading>
+                读写权限
+            </tab-heading>
+            <div class="no-borders pull-in m-b-none wrapper-md">
+                <form name="data" novalidate class="form form-horizontal">
+                    <div class="form-group row">
+                        <label class="wrap-title col-md-1 control-label">读写权限:</label>
+                        <div class="form-control1 col-md-3">
+                            <div class="input-group">
+                                <ui-select ng-model="data.permission" theme="bootstrap" ng-init="data.permission = undefined">
+                                    <ui-select-match placeholder="请选择...">{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices
+                                            repeat="item in permissions">
+                                        <div ng-bind-html="item.name"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="input-group-btn">
+                                    <button ng-click="data.permission = undefined"
+                                              class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-1">
+                            <p>» 私有：对object的所有访问操作需要进行身份验证。</p>
+                            <p>» 公共读：对object写操作需要进行身份验证；可以对object进行匿名读。</p>
+                            <p>» 公共读写：所有人都可以对object进行读写操作。</p>
+                        </div>
+                    </div>
+                    <div class="row mgt-10">
+                        <div class="col-md-3 text-center">
+                            <button type="button" ng-click="" class="btn btn-dark">
+                                <i class="fa fa-search"></i>设置
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </tab>
+
+        <tab>
+            <tab-heading>
+                静态网站
+            </tab-heading>
+            <div class="no-borders pull-in m-b-none wrapper-md">
+                <form name="data" novalidate class="form form-horizontal">
+                    <div class="form-group mgl-36">
+                        <label class="control-label col-md-1">
+                            默认首页:
+                        </label>
+                        <div class="col-md-3">
+                            <input type="text" required class="form-control" name="username" ng-model="data.index" placeholder="默认首页"/>
+                        </div>
+                    </div>
+                    <div class="form-group mgl-36">
+                        <label class="control-label col-md-1">
+                            默认404:
+                        </label>
+                        <div class="col-md-3">
+                            <input type="text" required class="form-control" name="username" ng-model="data.page404" placeholder="默认404"/>
+                        </div>
+                    </div>
+                    <div class="row mgt-10">
+                        <div class="col-md-4 text-center">
+                            <button type="button" ng-click="" class="btn btn-dark">
+                                <i class="fa fa-search"></i>设置
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </tab>
+
+        <tab>
+            <tab-heading>
+                日志管理
+            </tab-heading>
+            <div class="no-borders pull-in m-b-none wrapper-md">
+                <form name="data" novalidate class="form form-horizontal">
+                    <div class="form-group row">
+                        <label class="wrap-title col-md-2 control-label">日志存储位置:</label>
+                        <div class="form-control1 col-md-3">
+                            <div class="input-group">
+                                <ui-select ng-model="data.position" theme="bootstrap" ng-init="data.position = undefined">
+                                    <ui-select-match placeholder="请选择...">{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices
+                                            repeat="item in permissions">
+                                        <div ng-bind-html="item.name"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="input-group-btn">
+                                    <button ng-click="data.position = undefined"
+                                            class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <p class="col-md-10 col-md-offset-2 mgt-10">» 建议您配置日志设置，便于进行灵活数据统计以及问题排查。</p>
+                    </div>
+
+                    <div class="row mgt-10">
+                        <div class="col-md-5 text-center">
+                            <button type="button" ng-click="" class="btn btn-dark">
+                                <i class="fa fa-search"></i>设置
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </tab>
+
+        <tab>
+            <tab-heading>
+                防盗链
+            </tab-heading>
+            <div class="no-borders pull-in m-b-none wrapper-md">
+                <form name="data" novalidate class="form form-horizontal">
+                    <div class="form-group mgl-36">
+                        <label class="control-label col-md-1">
+                            Refer:
+                        </label>
+                        <div class="col-md-3">
+                            <input type="text" required class="form-control" name="username" ng-model="data.index" placeholder="还未还原refer"/>
+                        </div>
+                    </div>
+                    <div class="form-group mgl-36">
+                        <label class="control-label col-md-1">
+                            空Refer:
+                        </label>
+                        <div class="col-md-3">
+                           <p>允许refer为空</p>
+                        </div>
+                    </div>
+                    <div class="row mgt-10">
+                        <div class="col-md-4 text-center">
+                            <button type="button" ng-click="" class="btn btn-dark">
+                                <i class="fa fa-search"></i>设置
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </tab>
+
+        <tab>
+            <tab-heading>
+                域名管理
+            </tab-heading>
+            <div class="no-borders pull-in m-b-none wrapper-md">
+
+            </div>
+        </tab>
+
+        <tab>
+            <tab-heading>
+                跨域设置
+            </tab-heading>
+            <div class="no-borders pull-in m-b-none wrapper-md">
+
+                <ui-operate-bar options="operateData"></ui-operate-bar>
+
+                <ui-grid options="gridData" params="params" sort="sort"></ui-grid>
+
+            </div>
+        </tab>
+
+        <tab>
+            <tab-heading>
+                生命周期
+            </tab-heading>
+            <div class="no-borders pull-in m-b-none wrapper-md">
+
+            </div>
+        </tab>
+
+        <tab>
+            <tab-heading>
+                跨区域复制
+            </tab-heading>
+            <div class="no-borders pull-in m-b-none wrapper-md">
+
+            </div>
+        </tab>
+
+        <tab>
+            <tab-heading>
+                回源设置
+            </tab-heading>
+            <div class="no-borders pull-in m-b-none wrapper-md">
+
+            </div>
+        </tab>
+    </tabset>
+</div>

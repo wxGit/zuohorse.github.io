@@ -1,0 +1,67 @@
+<div class="bg-light lter b-b wrapper-md clearfix titleBtns">
+    <h2 class="m-n font-thin h4 pull-left">数据库 > Mysql > 备份恢复</h2>
+</div>
+
+<div class="wrapper-md">
+    <div class="clearfix">
+        <!--<strong style="font-size:18px;font-weight:normal;">监控与报警</strong>
+        <p class="pull-right subBtns">-->
+            <!--<button class="btn m-b-xs btn-success">切换访问模式</button>-->
+            <!--<button class="btn m-b-xs btn-success">修改链接地址</button>-->
+            <!--<button class="btn m-b-xs btn-success">申请外网地址</button>-->
+        <!--</p>-->
+    </div>
+
+    <tabset class="tab-container">
+        <tab>
+            <tab-heading>
+                备份数据
+                <!--<span class="badge badge-sm m-l-xs">16</span>-->
+            </tab-heading>
+            <div class="no-borders pull-in m-b-none wrapper-md">
+                <form name="data" novalidate class="form">
+                    <div class="form-group row">
+                        <label class="wrap-title col-md-1 control-label">时间范围:</label>
+                        <div class="form-control1 col-md-3">
+                            <input date-range-picker class="form-control date-picker" type="text" placeholder="2016-01-01 - 2016-09-16" ng-model="data.date" ng-init="data.date={startDate: null, endDate: null}"
+                                   min="2015-01-01"/>
+                        </div>
+                        <div class="col-md-1 text-center">
+                            <button type="button" ng-click="dbFormGrid.reLoadData()" class="btn btn-dark">
+                                <i class="fa fa-search"></i>查询
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </tab>
+        <tab>
+            <tab-heading>
+                备份设置
+            </tab-heading>
+            <ul class="no-borders pull-in m-b-none wrapper-md bk-items-list" style="padding-left: 50px;">
+
+                <li class="row">
+                    <div class="bk-item-name col-md-2">保留天数:</div><div class="col-md-8">7</div>
+                </li>
+                <li class="row">
+                    <div class="bk-item-name col-md-2">备份周期:</div><div class="col-md-8">星期一,星期二,星期三</div>
+                </li>
+                <li class="row">
+                    <div class="bk-item-name col-md-2">备份时间:</div><div class="col-md-8">20:00-21:00</div>
+                </li>
+                <li class="row">
+                    <div class="bk-item-name col-md-2">预计下次备份时间:</div><div class="col-md-8">2016-09-25 20:16:00</div>
+                </li>
+
+            </ul>
+            <div class="row">
+                <div class="col-md-2 text-center m-t-lg">
+                    <button type="button" ng-click="" class="btn btn-dark btn-sm">
+                        <i class="fa fa-pencil"></i>编辑
+                    </button>
+                </div>
+            </div>
+        </tab>
+    </tabset>
+</div>

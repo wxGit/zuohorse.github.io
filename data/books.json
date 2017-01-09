@@ -1,0 +1,80 @@
+{
+  "responseBody": {
+    "content":[
+      {
+        "id":1,
+        "bookName":"java从入门到放弃",
+        "authorName":"作者不详",
+        "publishDate":"2016-09-10",
+        "price":10,
+        "bookType":{
+          "id": "1",
+          "label": "计算机",
+          "value": "computer"
+        },
+        "desc":"一本让你神魂颠倒的书"
+      },
+      {
+        "id":2,
+        "bookName":"swift从老手到菜鸟",
+        "authorName":"我是作者",
+        "publishDate":"2016-08-10",
+        "price":10,
+        "bookType":{
+          "id": "2",
+          "label": "金融",
+          "value": "financial"
+        },
+        "desc":"一本让你神经错乱的书"
+      },
+      {
+        "id":3,
+        "bookName":"放弃理解C#",
+        "authorName":"c#",
+        "publishDate":"2016-07-10",
+        "price":10,
+        "bookType":{
+          "id": "3",
+          "label": "哲学",
+          "value": "philosophy"
+        },
+        "desc":"一本让你神志不清的书"
+      },
+      {
+        "id":4,
+        "bookName":"前端从简单到出轨",
+        "authorName":"谁写的",
+        "publishDate":"2016-06-10",
+        "price":10,
+        "bookType":{
+          "id": "5",
+          "label": "文学",
+          "value": "literature"
+        },
+        "desc":"一本让你神情恍惚的书"
+      },
+      {
+        "id":5,
+        "bookName":"PHP千万别碰",
+        "authorName":"开个玩笑",
+        "publishDate":"2016-05-10",
+        "price":10,
+        "bookType":{
+          "id": "6",
+          "label": "网络小说",
+          "value": "Fiction"
+        },
+        "desc":"一本神仙也救不了的书"
+      }
+    ],
+    "first":false,
+    "last":true,
+    "numberOfElements":5,
+    "pageNumber":1,
+    "pageSize":3,
+    "totalElements":5,
+    "totalPages":1
+  },
+  "status":200,
+  "transCode":"bookPage"
+}

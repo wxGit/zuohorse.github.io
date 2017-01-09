@@ -1,0 +1,84 @@
+{
+  "responseBody": [
+    {
+      "data": {
+        "description": "NewTouch",
+        "departmentId": 3
+      },
+      "children": [
+        {
+          "data": {
+            "description": "金融事业部",
+            "departmentId": 8
+          },
+          "children": [
+            {
+              "data": {
+                "description": "开发一部",
+                "departmentId": 9
+              },
+              "children": [
+                {
+                  "data": {
+                    "description": "1234567890",
+                    "departmentId": 27
+                  },
+                  "label": "1234567890"
+                }
+              ],
+              "label": "开发一部"
+            },
+            {
+              "data": {
+                "description": "研发中心",
+                "departmentId": 10
+              },
+              "children": [
+                {
+                  "data": {
+                    "description": "研发中心3",
+                    "departmentId": 20
+                  },
+                  "label": "研发中心3"
+                },
+                {
+                  "data": {
+                    "description": "开发二部一处",
+                    "departmentId": 18
+                  },
+                  "label": "开发二部一处"
+                },
+                {
+                  "data": {
+                    "description": "开发二部二处",
+                    "departmentId": 21
+                  },
+                  "children": [
+                    {
+                      "data": {
+                        "description": "DDC221",
+                        "departmentId": 25
+                      },
+                      "label": "DDC221"
+                    }
+                  ],
+                  "label": "开发二部二处"
+                }
+              ],
+              "label": "开发二部"
+            }
+          ],
+          "label": "金融事业部"
+        },
+        {
+          "data": {
+            "description": "信息技术部1",
+            "departmentId": 11
+          },
+          "label": "信息技术部1"
+        }
+      ],
+      "label": "新致软件"
+    }
+  ]
+}

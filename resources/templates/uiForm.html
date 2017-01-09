@@ -1,0 +1,39 @@
+<form name="dataForm" novalidate ng-submit="uiForm.submit(dataForm.$valid)" class="form-horizontal form">
+    <div class="modal-body form-horizontal form">
+        <div class="form-body portlet dbLight" style="margin-bottom: 0px;">
+            <div class="portlet-title clearfix" ng-if="uiForm.title.show" style="padding-bottom:10px;border-bottom:1px solid #ececec;">
+                <div class="caption font-green-sharp pull-left">
+                    <i class="fa fa-{{uiForm.title.icon}}" style="font-size: 16px;"></i>
+                    <span class="caption-subject bold uppercase">{{uiForm.showEditBtn?(uiForm.globalFieldEditor?'查看':'编辑'):'新增'}}{{uiForm.title.label}}</span>
+                </div>
+                <div class="tools pull-right" ng-if="uiForm.settings.showClose" style="cursor:pointer;">
+                    <i class="fa fa-close" ng-click="uiForm.modalClose()"></i>
+                </div>
+            </div>
+
+            <div class="portlet-body">
+                <ui-form-fields></ui-form-fields>
+            </div>
+
+            <div class="modal-footer" ng-show="!uiForm.viewDetail">
+                <button class="btn btn-dark" ng-show="uiForm.showEditBtn" type="button" ng-click="uiForm.changeEditStatus()">
+                    <!--<i class="fa fa-pencil" ng-if="uiForm.globalFieldEditor"></i>-->
+                    <!--<i class="fa fa-close" ng-if="!uiForm.globalFieldEditor"></i>-->
+                    {{uiForm.globalFieldEditor?'编辑':'取消'}}
+                </button>
+                <button class="btn btn-dark" type="submit" ng-show="!uiForm.showEditBtn || !uiForm.globalFieldEditor" ng-disabled="uiForm.submitting">
+                    <!--<i class="fa fa-check"></i>-->确定
+                </button>
+                <button class="btn btn-default" type="button" ng-click="uiForm.modalClose()" ng-if="uiForm.settings.showClose">
+                    <!--<i class="fa fa-close"></i>-->关闭
+                </button>
+            </div>
+
+            <div class="modal-footer" ng-show="uiForm.viewDetail">
+                <button class="btn btn-default" type="button" ng-click="uiForm.modalClose()" ng-if="uiForm.settings.showClose">
+                    <!--<i class="fa fa-close"></i>-->关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

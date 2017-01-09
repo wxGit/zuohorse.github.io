@@ -1,0 +1,309 @@
+<div class="wrapper-md">
+	<div class="panel panel-default form-horizontal form" role="form" >
+        <div ng-if="dbFormGrid.options.showSearchForm">
+            <div class="panel-heading" style="background-color: #f6f8f8 !important;">
+              查询条件
+            </div>
+
+            <div class="row wrapper">
+
+              <div class="col-md-10">
+                   <div class="col-md-{{field.cols}}" ng-repeat="field in dbFormGrid.options.form.fields">
+                        <div class="form-group">
+                            <label class="col-md-{{field.labelCols}} control-label" style="padding-right: 0;">{{field.label}}</label>
+                            <!-- orgTree -->
+                            <div class="col-md-{{field.labelCols==''?'':12-field.labelCols}} dbFormItem" ng-if="field.type=='orgTree'">
+                                <db-org-tree></db-org-tree>
+                            </div>
+                            <div class="col-md-{{field.labelCols==''?'': (12 - field.labelCols - 1)}}"
+                                 ng-if="field.type==='text'">
+                                <input ng-model='dbFormGrid.queryParams[field.name]' type="text" placeholder="{{field.placeholder}}"
+                                       class="form-control">
+                            </div>
+                            <div class="col-md-{{field.labelCols==''?'': (12 - field.labelCols - 1)}}" ng-if="field.type==='select'">
+                                <div class="input-group">
+                                    <ui-select ng-model="dbFormGrid.queryParams[field.name]" theme="bootstrap" ng-init="dbFormGrid.queryParams[field.name] = undefined">
+                                        <ui-select-match placeholder="请选择...">{{$select.selected[field.valField]}}</ui-select-match>
+                                        <ui-select-choices
+                                                repeat="item in field.data">
+                                            <div ng-bind-html="item[field.valField]"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <span class="input-group-btn">
+                                      <button ng-click="dbFormGrid.queryParams[field.name] = undefined"
+                                              class="btn btn-default" type="button">
+                                          <span class="glyphicon glyphicon-trash"></span>
+                                      </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-{{field.labelCols==''?'': (12 - field.labelCols - 1)}}"
+                                 ng-if="field.type==='dateRange'">
+                                <div class=" input-group input-larger date-picker input-daterange" style="width: 100%;"
+                                     data-date="now"
+                                     data-date-format="yyyy-mm-dd">
+                                    <input type="text" class="form-control" ng-model="dbFormGrid.queryParams.startDate"
+                                           placeholder="开始日期">
+                                    <span class="input-group-addon">-</span>
+                                    <input type="text" class="form-control" ng-model="dbFormGrid.queryParams.endDate"
+                                           placeholder="结束日期">
+                                </div>
+                            </div>
+                            <div class="col-md-{{field.labelCols==''?'': (12 - field.labelCols - 1)}}"
+                                 ng-if="field.type==='date'">
+                                <input ng-model="dbFormGrid.queryParams[field.name]" name="{{field.name}}"
+                                       class="form-control date-picker" placeholder="{{field.placeholder}}" type="text"
+                                       data-date-format="yyyy-mm-dd"/>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+
+              <div class="col-md-2 text-center" style="margin-bottom:0px;">
+                   <button type="button" ng-click="dbFormGrid.reLoadData()" class="btn btn-dark">
+                       <i class="fa fa-search"></i>查询
+                   </button>
+              </div>
+            </div>
+        </div>
+	    <div class="">
+	      <div class="panel-heading" style="background-color: #f6f8f8 !important;" ng-if="dbFormGrid.options.showGridTitle" ng-bind-html="dbFormGrid.options.grid.title">
+
+	      </div>
+	      <div class="operateBtns clearfix" style="padding:15px; padding-bottom:0px;">
+              <div class="fl">
+                <button ng-if="dbFormGrid.events.grid.operationEvents.length > 0"
+                        ng-repeat="button in dbFormGrid.events.grid.operationEvents"
+                        class="btn btn-sm {{button.class}}" type="button"
+                        ng-click="dbFormGrid.operationButtonClick(button.click)" style="margin-right:10px;">
+                    <i class="fa fa-{{button.icon}}"></i>
+                    {{button.name}}
+                </button>
+              </div>
+
+              <div class="input-group" style="width: 18%;" ng-if="dbFormGrid.events.grid.operationSearch">
+                  <input type="text" ng-model="dbFormGrid.queryParams.txt" class="form-control input-sm bg-light no-border rounded padder ng-pristine ng-valid ng-touched" placeholder="关键字" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-34-8309">
+                  <span class="input-group-btn" ng-click="dbFormGrid.reLoadData()">
+                    <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+                  </span>
+              </div>
+
+     	  </div>
+     	  <div class="table-responsive table-scrollable" style="padding:15px;padding-bottom: 0">
+		      <!-- <table class="table table-striped b-t b-light">
+		        <thead>
+		          <tr>
+		            <th style="width:20px;">
+		              <label class="i-checks m-b-none">
+		                <input type="checkbox"><i></i>
+		              </label>
+		            </th>
+		            <th>Project</th>
+		            <th>Task</th>
+		            <th>Date</th>
+		            <th style="width:30px;"></th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		          <tr>
+		            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+		            <td>Idrawfast</td>
+		            <td>4c</td>
+		            <td>Jul 25, 2013</td>
+		            <td>
+		              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+		            <td>Formasa</td>
+		            <td>8c</td>
+		            <td>Jul 22, 2013</td>
+		            <td>
+		              <a href ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+		            <td>Avatar system</td>
+		            <td>15c</td>
+		            <td>Jul 15, 2013</td>
+		            <td>
+		              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+		            <td>Throwdown</td>
+		            <td>4c</td>
+		            <td>Jul 11, 2013</td>
+		            <td>
+		              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+		            <td>Idrawfast</td>
+		            <td>4c</td>
+		            <td>Jul 7, 2013</td>
+		            <td>
+		              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+		            <td>Formasa</td>
+		            <td>8c</td>
+		            <td>Jul 3, 2013</td>
+		            <td>
+		              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+		            <td>Avatar system</td>
+		            <td>15c</td>
+		            <td>Jul 2, 2013</td>
+		            <td>
+		              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+		            <td>Videodown</td>
+		            <td>4c</td>
+		            <td>Jul 1, 2013</td>
+		            <td>
+		              <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+		            </td>
+		          </tr>
+		        </tbody>
+		      </table> -->
+
+		      <table class="table table-bordered table-hover dataTable no-footer">
+                    <thead>
+                    <tr style="background-color: #E4EAEC;">
+                        <th ng-if="dbFormGrid.options.grid.settings.showCheckBox"
+                            style="vertical-align: middle;width:5%;text-align: center;padding: 0px;border-right-width: 0px;">
+
+                            <div class="form-group form-md-checkboxes" style="margin: 0px;">
+                                <div class="md-checkbox-inline" style="margin: 0px;">
+                                    <div class="md-checkbox">
+
+	                                    <label class="i-checks m-b-none i-checks-sm" ng-click="dbFormGrid.allRowClick()" ng-if="dbFormGrid.options.grid.settings.allRowChecked">
+							                <input type="checkbox" checked="checked"><i></i>
+							            </label>
+
+							            <label class="i-checks m-b-none i-checks-sm" ng-click="dbFormGrid.allRowClick()" ng-if="!dbFormGrid.options.grid.settings.allRowChecked">
+											<input type="checkbox"><i></i>
+							            </label>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </th>
+                        <th ng-repeat="header in dbFormGrid.options.grid.header"
+                            style="width: {{header.width}};text-align: center;cursor:pointer;" ng-show="true" title="{{header.name}}" ng-click="dbFormGrid.sorting(header)" >
+                            <span class="headerName" style="line-height: 25px;">{{header.name}}</span>
+                            <i class="sorting {{header.sortingClass}}" id="sorting"></i>
+                        </th>
+                        <th ng-if="dbFormGrid.options.grid.rowOperation.show"
+                            style="width:{{dbFormGrid.options.grid.rowOperation.width}};text-align: center;">操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr ng-repeat="row in dbFormGrid.rows">
+                        <th ng-if="dbFormGrid.options.grid.settings.showCheckBox"
+                            style="vertical-align: middle;width:5%;text-align: center;padding: 0px;border-right-width: 0px;">
+
+                            <div class="form-group form-md-checkboxes" style="margin: 0px;">
+                                <div class="md-checkbox-inline" style="margin: 0px;">
+                                    <div class="md-checkbox">
+
+                                        <label class="i-checks m-b-none i-checks-sm" ng-click="dbFormGrid.rowClick(row)" ng-if="row.checked">
+							                <input type="checkbox" checked="checked"><i></i>
+							            </label>
+
+							            <label class="i-checks m-b-none i-checks-sm" ng-click="dbFormGrid.rowClick(row)" ng-if="!row.checked">
+											<input type="checkbox"><i></i>
+							            </label>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </th>
+                        <td ng-repeat="header in dbFormGrid.options.grid.header" style="text-align: center;" ng-show="true" title="{{row[header.field]}}">
+                            <a ng-click="header.clickEvent(row)" ng-class="header.class" ng-if="header.clickEvent">
+                                {{row[header.field]}}</a>
+                            <span ng-if="!header.clickEvent" ng-class="header.class"
+                                  style="color:{{header.colorEvent(row[header.field],row)}}" ng-bind-html="row[header.field]"></span>
+                        </td>
+                        <td ng-if="dbFormGrid.options.grid.rowOperation.show" style="text-align: center;">
+                            <button type="button" style="padding: 3px 8px; margin-right:3px;"
+                                    class="btn btn-default {{button.class}}"
+                                    ng-disabled="button.isDisabled(row)"
+                                    ng-repeat="button in dbFormGrid.events.grid.rowEvents"
+                                    ng-click="button.click(row)" title="{{button.name}}">
+                                {{button.name}}
+                            </button>
+                        </td>
+                    </tr>
+                    <tr ng-show="dbFormGrid.rows.length==0">
+
+                        <td width="100%"
+                            ng-if="!dbFormGrid.options.grid.settings.showCheckBox && !dbFormGrid.options.grid.rowOperation.show"
+                            colspan="{{dbFormGrid.options.grid.header.length}}" class="text-center">
+                            {{dbFormGrid.loadingTip}}
+                        </td>
+                        <td width="100%"
+                            ng-if="dbFormGrid.options.grid.settings.showCheckBox != dbFormGrid.options.grid.rowOperation.show"
+                            colspan="{{dbFormGrid.options.grid.header.length + 1}}" class="text-center">
+                            {{dbFormGrid.loadingTip}}
+                        </td>
+                        <td width="100%"
+                            ng-if="dbFormGrid.options.grid.settings.showCheckBox && dbFormGrid.options.grid.rowOperation.show"
+                            colspan="{{dbFormGrid.options.grid.header.length + 2}}" class="text-center">
+                            {{dbFormGrid.loadingTip}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+	      </div>
+	    </div>
+	    <footer class="panel-footer">
+	      <div class="text-right">
+	            <ul class="pagination">
+	                <li class="paginate_button" ng-click="dbFormGrid.reLoadData()">
+	                    <a href="javascript:void(0)" class="refresh" style="color: #2f3342;"><i class="fa fa-refresh"></i></a>
+	                </li>
+	                <li class="paginate_button previous {{dbFormGrid.page.prevPageDisabled}}"
+	                    ng-click="dbFormGrid.pageNumberClick('prev')">
+	                    <a href="javascript:void(0)"><i class="fa fa-angle-left"></i></a>
+	                </li>
+	                <li ng-repeat="pageNumber in dbFormGrid.page.pageNumbers"
+	                    class="paginate_button {{pageNumber.active}} {{pageNumber.disabled}}"
+	                    ng-click="dbFormGrid.pageNumberClick(pageNumber.number)">
+	                    <a href="javascript:void(0)">{{pageNumber.number}}</a>
+	                </li>
+	                <li class="paginate_button next {{dbFormGrid.page.nextPageDisabled}}"
+	                    ng-click="dbFormGrid.pageNumberClick('next')"><a href="javascript:void(0)"><i
+	                        class="fa fa-angle-right"></i></a>
+	                </li>
+	                <li class="paginate_button disabled"><a href="javascript:void(0)">{{dbFormGrid.page.totalRecords}}条/{{dbFormGrid.page.totalPages}}页</a></li>
+	            </ul>
+          </div>
+	    </footer>
+	  </div>
+
+	  <div class="spinner" ng-show="showLoading">
+		  <div class="cube1"></div>
+		  <div class="cube2"></div>
+	  </div>
+
+</div>
+
+

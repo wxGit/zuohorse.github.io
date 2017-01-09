@@ -1,0 +1,64 @@
+{
+  "responseBody": {
+    "content":[
+      {
+        "id":1,
+        "name":"WEB-INF/",
+        "sizeValue":"",
+        "type":"文件夹",
+        "isdir":true,
+        "createTimeValue":""
+      },
+      {
+        "id":2,
+        "name":"api/",
+        "sizeValue":"",
+        "type":"文件夹",
+        "isdir":true,
+        "createTimeValue":""
+      },
+      {
+        "id":3,
+        "name":"css/",
+        "sizeValue":"",
+        "type":"文件夹",
+        "isdir":true,
+        "createTimeValue":""
+      },
+      {
+        "id":4,
+        "name":"fonts/",
+        "sizeValue":"-",
+        "type":"文件夹",
+        "isdir":true,
+        "createTimeValue":""
+      },
+      {
+        "id":5,
+        "name":"img/",
+        "sizeValue":"",
+        "type":"文件夹",
+        "isdir":true,
+        "createTimeValue":""
+      },
+      {
+        "id":6,
+        "name":"index.html",
+        "sizeValue":"3.359KB",
+        "type":"html",
+        "isdir":false,
+        "createTimeValue":"2016-05-10 14:24:05"
+      },
+      {
+        "id":7,
+        "name":"angular-stripped.html",
+        "sizeValue":"51.207KB",
+        "type":"html",
+        "isdir":false,
+        "createTimeValue":"2016-05-10 14:23:42"
+      }
+    ]
+  },
+  "status":200,
+  "transCode":"filesTemplatePage"
+}

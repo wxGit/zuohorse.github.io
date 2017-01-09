@@ -1,0 +1,12 @@
+{
+  "responseBody":[
+    { "id": "0",      "label": "全部",      "value": "all"},
+    { "id": "1",    "label": "计算机",    "value": "computer"},
+    { "id": "2", "label": "金融", "value": "financial"},
+    { "id": "3",    "label": "哲学",    "value": "philosophy"},
+    { "id": "4",  "label": "高端办公",  "value": "Office"},
+    { "id": "5",  "label": "文学",  "value": "literature"},
+    { "id": "6",    "label": "网络小说", "value": "Fiction"},
+    { "id": "7",   "label": "杂志", "value": "magazine" }
+  ]
+}

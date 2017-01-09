@@ -1,0 +1,20 @@
+<div style="position: relative;">
+    <input ng-click="uiResourceTree.selectResource()" ng-model="uiForm.formData[field.name]"
+           name="{{field.name}}" readonly type="text" placeholder="{{field.placeholder}}" ng-required="{{field.required}}" class="form-control"/>
+        <span class="help-block"
+              ng-show="dataForm[field.name].$invalid && uiForm.submited">{{field.label}}字段为必录项!</span>
+    <div class="comboTree b-a bg-light dk r r-2x" ng-if="showTree" style="position: absolute !important;width: 100%;z-index: 100;">
+        <span ng-if="doing_async">...loading...</span>
+        <abn-tree
+                tree-data         = "uiResourceTree.my_data"
+                tree-control      = "uiResourceTree.my_tree"
+                on-select         = "uiResourceTree.my_tree_handler(branch)"
+                expand-level      = "2"
+                initial-selection = "Granny Smith"
+                icon-leaf         = "fa fa-file-o"
+                icon-expand       = "fa fa-plus"
+                icon-collapse     = "fa fa-minus"
+        >
+        </abn-tree>
+    </div>
+</div>

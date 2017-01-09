@@ -1,0 +1,147 @@
+<div>
+    <div class="" role="form">
+        <!-- TITLE -->
+        <div class="panel-heading" ng-if="options.settings.showTitle && options.settings.title">
+            {{options.settings.title}}
+        </div>
+        <div class="table-responsive table-scrollable no-padding-bottom" ng-class="{wrapper : options.settings.showWrapper}">
+
+            <table class="table table-bordered table-hover dataTable no-footer">
+
+                <!-- HEADER -->
+                <thead>
+                <tr class="bg-light">
+                    <!-- 选择 -->
+                    <th ng-if="options.choice.show"
+                        style="vertical-align: middle;width:5%;text-align: center;padding: 0px;border: none;">
+
+                        <span class="headerName" ng-if="options.choice.mode == 'radio'"
+                              style="line-height: 25px;">选择</span>
+
+                        <div class="form-group form-md-checkboxes m-n" ng-if="options.choice.mode == 'checkbox'">
+                            <div class="md-checkbox-inline m-n">
+                                <div class="md-checkbox">
+                                    <label class="i-checks m-b-none i-checks-sm">
+                                        <input type="checkbox" ng-model="options.settings.allRowChecked"
+                                               ng-click="options.allRowClick()"><i></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                    <th ng-repeat="header in options.header"
+                        style="width: {{header.width}}; border: none;"
+                        ng-style="header.sortable ? { 'cursor':'pointer'} : {}" ng-show="true" title="{{header.name}}"
+                        ng-click="options.sorting(header)">
+                        <span class="headerName" style="line-height: 25px;">{{header.name}}</span>
+                        <i ng-if="header.sortable" class="sorting {{header.sortingClass}}" style="float: right" id="sorting"></i>
+                    </th>
+                    <th ng-if="options.operation.show" class="headerName"
+                        style="width:{{options.settings.rowOperation.width}};text-align: center;border: none;">操作
+                    </th>
+                </tr>
+                </thead>
+                <!-- BODY -->
+                <tbody>
+                <tr ng-repeat="row in options.rows">
+                    <!-- 选择 -->
+                    <th ng-if="options.choice.show" class="v-middle"
+                        style="vertical-align: middle;width:5%;text-align: center;padding: 0px; border-top: none; border-top: none; border-right: none; border-color: #eaeff0;">
+
+                        <div class="form-group form-md-checkboxes m-n">
+                            <div class="md-checkbox-inline m-n">
+                                <div class="md-checkbox">
+                                    <label class="i-checks m-b-none i-checks-sm">
+                                        <input type="checkbox" ng-model="row.checked" ng-click="options.rowClick(row)"
+                                               name="options.choice.field" ng-if="options.choice.mode == 'checkbox'">
+                                        <input type="radio" ng-model="row.checked" ng-click="options.rowClick(row)"
+                                               name="options.choice.field"
+                                               ng-if="options.choice.mode == 'radio'"><i></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </th>
+                    <td class="v-middle" ng-repeat="header in options.header" style="border-top: none;" ng-show="true"
+                        title="{{row[header.field]}}">
+                        <a ng-click="header.events.clicker(row)" class="l-h-2x" ng-class="header.class" ng-if="header.events.clicker">
+                            <span ng-if="header.events.formatter" ng-bind-html="header.events.formatter(row[header.field],row)"></span>
+                            <span ng-if="!header.events.formatter" ng-bind-html="row[header.field]"></span>
+                        </a>
+                        <span ng-if="!header.events.clicker" class="l-h-2x" ng-class="header.class"
+                              style="color:{{header.events.color(row[header.field],row)}}">
+                            <span ng-if="header.events.formatter" ng-bind-html="header.events.formatter(row[header.field], row)"></span>
+                            <span ng-if="!header.events.formatter" ng-bind-html="row[header.field]"></span>
+                        </span>
+
+                        <!--header.events.formatter(row[header.field],row)-->
+                    </td>
+                    <td ng-if="options.operation.show" style="text-align: center;border-top: none;">
+                        <button type="button" style="padding: 3px 8px; margin-right:3px;"
+                                class="btn btn-default {{button.class}}"
+                                ng-disabled="button.isDisabled(row)"
+                                ng-repeat="button in options.operation.events"
+                                ng-click="button.clicker(row)" title="{{button.name}}">
+                            {{button.name}}
+                        </button>
+                    </td>
+                </tr>
+                <tr ng-show="options.rows.length == 0">
+
+                    <td width="100%"
+                        ng-if="!options.choice.show && !options.operation.show"
+                        colspan="{{options.header.length}}" class="text-center">
+                        {{options.loadingTip}}
+                    </td>
+                    <td width="100%"
+                        ng-if="options.choice.show != options.operation.show"
+                        colspan="{{options.header.length + 1}}" class="text-center">
+                        {{options.loadingTip}}
+                    </td>
+                    <td width="100%"
+                        ng-if="options.choice.show && options.operation.show"
+                        colspan="{{options.header.length + 2}}" class="text-center">
+                        {{options.loadingTip}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 分页 -->
+        <footer class="panel-footer no-border no-padding-top" ng-if="options.page.show">
+            <div class="text-right">
+                <ul class="pagination pagination-dark">
+                    <li class="" ng-click="options.reLoadData()">
+                        <a href="javascript:void(0)" class="refresh" style="color: #2f3342;"><i
+                                class="fa fa-refresh"></i></a>
+                    </li>
+                    <li class="previous {{params.page.prevPageDisabled}}"
+                        ng-click="options.pageNumberClick('prev')">
+                        <a href="javascript:void(0)"><i class="fa fa-angle-left"></i></a>
+                    </li>
+                    <li ng-repeat="pageNumber in params.page.pageNumbers"
+                        class="{{pageNumber.active}} {{pageNumber.disabled}}"
+                        ng-click="options.pageNumberClick(pageNumber.number)">
+                        <a href="javascript:void(0)">{{pageNumber.number}}</a>
+                    </li>
+                    <li class="next {{params.page.nextPageDisabled}}"
+                        ng-click="options.pageNumberClick('next')"><a href="javascript:void(0)"><i
+                            class="fa fa-angle-right"></i></a>
+                    </li>
+                    <li class="disabled"><a href="javascript:void(0)">{{params.page.totalRecords}}条/{{params.page.totalPages}}页</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+
+    </div>
+
+    <div class="spinner" ng-show="showLoading">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
+    </div>
+
+</div>
+
+

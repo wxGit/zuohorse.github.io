@@ -1,0 +1,67 @@
+<div class="aside-wrap">
+    <div class="navi-wrap">
+
+        <accordion close-others="oneAtATime" class="accordion-sider">
+
+            <accordion-group is-open="status.open">
+                <accordion-heading popover="产品服务" popover-trigger="mouseenter" popover-placement="right" popover-animation="true">
+                    <i class="fa" ng-class="{'fa-caret-down': status.open, 'fa-caret-right': !status.open}"></i>
+                    <span>产品服务</span>
+                </accordion-heading>
+                <ul class="nav">
+                    <li ui-sref-active="active" popover="云服务器" popover-trigger="mouseenter" popover-placement="right" popover-animation="true">
+                        <a href="#">
+                            <i class="fa fa-server icon text-info-dker"></i>
+                            <span class="font-bolder">云服务器</span>
+                        </a>
+                    </li>
+
+                    <li ui-sref-active="active" popover="Mysql" popover-trigger="mouseenter" popover-placement="right" popover-animation="true">
+                        <a ui-sref="paas.mysql">
+                            <i class="fa fa-database icon text-info-dker"></i>
+                            <span class="font-bolder">Mysql</span>
+                        </a>
+                    </li>
+
+                    <li ui-sref-active="active" popover="Redis" popover-trigger="mouseenter" popover-placement="right" popover-animation="true">
+                        <a ui-sref="paas.redis">
+                            <i class="fa fa-cube icon text-info-dker"></i>
+                            <span class="font-bolder">Redis</span>
+                        </a>
+                    </li>
+
+                    <li ui-sref-active="active" popover="Mongodb" popover-trigger="mouseenter" popover-placement="right" popover-animation="true">
+                        <a ui-sref="paas.uiTree">
+                            <i class="fa fa-leaf icon text-info-dker"></i>
+                            <span class="font-bolder">Mongodb</span>
+                        </a>
+                    </li>
+                </ul>
+            </accordion-group>
+
+            <accordion-group is-open="open" ng-init="open = true">
+                <accordion-heading popover="用户中心" popover-trigger="mouseenter" popover-placement="right" popover-animation="true">
+                    <i class="fa" ng-class="{'fa-caret-down': open, 'fa-caret-right': !open}"></i>
+                    <span>用户中心</span>
+                </accordion-heading>
+                <ul class="nav">
+                    <li popover="协议兑换" popover-trigger="mouseenter" popover-placement="right" popover-animation="true">
+                        <a href="#">
+                            <i class="fa fa-ticket icon text-info-dker"></i>
+                            <span class="font-bolder">协议兑换</span>
+                        </a>
+                    </li>
+
+                    <li popover="我的订单" popover-trigger="mouseenter" popover-placement="right" popover-animation="true">
+                        <a href="#">
+                            <i class="fa fa-list-alt icon text-info-dker"></i>
+                            <span class="font-bolder">我的订单</span>
+                        </a>
+                    </li>
+                </ul>
+            </accordion-group>
+
+        </accordion>
+
+    </div>
+</div>

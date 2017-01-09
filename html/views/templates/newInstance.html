@@ -1,0 +1,183 @@
+<form name="dataForm1" novalidate ng-submit="submitDialogForm(dataForm1.$valid)">
+    <div class="modal-header">
+        <span class="caption-subject bold uppercase h4">新建实例</span>
+    </div>
+    <div class="modal-body form-horizontal form">
+        <div class="b-a">
+            <div class="row" style="margin-left: 0 !important;margin-right: 0 !important;height: 325px;">
+                <div class="col-md-8 wrapper-sm h-full">
+                    <div class="ui steps clearfloat">
+                        <div class="step fl" ng-class="{'active':activeId == 0}">
+                            <span class="label-num green">1</span>
+                            <span class="label-txt">基本配置</span>
+                        </div>
+                        <div class="step fl" ng-class="{'active':activeId == 1}">
+                            <span class="label-num green">2</span>
+                            <span class="label-txt">选择网络</span>
+                        </div>
+                        <div class="step fl" ng-class="{'active':activeId == 2}">
+                            <span class="label-num green">3</span>
+                            <span class="label-txt">信息设置</span>
+                        </div>
+                    </div>
+
+                    <div class="ui bottom segment" ng-class="{'active':activeId == 0}">
+                        <div class="wrapper-md">
+                            <div class="form-group row">
+                                <div class="wrap-title col-md-2">地域:</div>
+                                <div class="form-control1 col-md-10">
+                                    <div class="btn-group">
+                                        <label class="btn btn-default" ng-model="formdata.region" btn-radio="'beijing'">北京</label>
+                                        <label class="btn btn-default" ng-model="formdata.region" btn-radio="'shanghai'">上海</label>
+                                        <label class="btn btn-default" ng-model="formdata.region" btn-radio="'dalian'">大连</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="wrap-title col-md-2">可用区:</div>
+                                <div class="form-control1 col-md-5">
+
+                                    <ui-select ng-model="formdata.area" theme="bootstrap">
+                                        <ui-select-match placeholder="请选择">{{$select.selected.label}}</ui-select-match>
+                                        <ui-select-choices
+                                                repeat="item in fields">
+                                            <div ng-bind-html="item.label"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="wrap-title col-md-2">版本:</div>
+                                <div class="form-control1 col-md-10">
+                                    <div class="btn-group">
+                                        <label class="btn btn-default" ng-model="formdata.version" btn-radio="'5.5'">5.5</label>
+                                        <label class="btn btn-default" ng-model="formdata.version" btn-radio="'5.6'">5.6</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui bottom segment" ng-class="{'active':activeId == 1}">
+                        <div class="wrapper-md">
+                            <div class="form-group row">
+                                <div class="wrap-title col-md-2">存储空间:</div>
+                                <div class="form-control1 col-md-6">
+                                    <rzslider rz-slider-model="slider_bar.value" rz-slider-options="slider_bar.options"></rzslider>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="clearfix numberComponent" style="margin-top: 5px;margin-left: -5px;">
+                                        <input type="text" ng-disabled="slider_bar.value >= 2000 || slider_bar.value <= 0" class="form-control" ng-model="slider_bar.value" style="width: 55px;height: 35px;"/>
+                                        <div class="plusMinus">
+                                            <button  type="button" ng-disabled="slider_bar.value >= 2000" ng-click="slider_bar.value=slider_bar.value+5">
+                                                <i class="fa fa-caret-up"></i>
+                                            </button>
+                                            <button  type="button" ng-disabled="slider_bar.value <= 0" ng-click="slider_bar.value=slider_bar.value-5">
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="wrap-title col-md-2">内存:</div>
+                                <div class="form-control1 col-md-5">
+                                    <ui-select ng-model="formdata.memory" theme="bootstrap">
+                                        <ui-select-match placeholder="请选择">{{$select.selected.label}}</ui-select-match>
+                                        <ui-select-choices
+                                                repeat="item in fields">
+                                            <div ng-bind-html="item.label"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui bottom segment" ng-class="{'active':activeId == 2}">
+                        <div class="wrapper-md">
+                            <div class="form-group row">
+                                <div class="wrap-title col-md-2">申请时长:</div>
+                                <div class="form-control1 col-md-10">
+                                    <div class="clearfix numberComponent">
+                                        <input type="number" class="form-control" ng-model="formdata.monthCount" style="width: 15%;"/>
+                                        <div class="plusMinus">
+                                            <button type="button" ng-click="formdata.monthCount = formdata.monthCount+1">
+                                                <i class="fa fa-caret-up"></i>
+                                            </button>
+                                            <button type="button" ng-disabled="formdata.monthCount <= 1" ng-click="formdata.monthCount = formdata.monthCount-1">
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="wrap-title col-md-2">数量:</div>
+                                <div class="form-control1 col-md-10">
+                                    <div class="clearfix numberComponent">
+                                        <input type="number" class="form-control" ng-model="formdata.count" style="width: 15%;"/>
+                                        <div class="plusMinus">
+                                            <button type="button" ng-click="formdata.count = formdata.count+1">
+                                                <i class="fa fa-caret-up"></i>
+                                            </button>
+                                            <button type="button" ng-disabled="formdata.count <= 1" ng-click="formdata.count = formdata.count-1">
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui basic buttons wrapper-sm">
+                        <button type="button" class="btn btn-default pull-left m-r-sm" ng-click="cancel()">取消</button>
+                        <button type="button" class="btn btn-default pull-left" ng-click="prevHandler()" ng-disabled="activeId == 0">上一步</button>
+                        <button type="button" class="btn btn-blue pull-right m-l-sm" ng-disabled="activeId < 2">确认</button>
+                        <button type="button" class="btn btn-blue pull-right" ng-click="nextHandler()" ng-disabled="activeId == 2">下一步</button>
+                    </div>
+                </div>
+                <div class="col-md-4 wrapper-sm h-full" style="border-left: 1px solid #dee5e7;">
+                    <h4 class="right-title">当前选购配置</h4>
+                    <ul class="bk-items-list">
+                        <li>
+                            <span class="bk-item-name">配置:</span><span>{{formdata.region}} {{formdata.area.label}}</span>
+                        </li>
+                        <li>
+                            <span class="bk-item-name">版本:</span><span>{{formdata.version}}</span>
+                        </li>
+                        <li>
+                            <span class="bk-item-name">存储:</span><span>{{slider_bar.value}}G</span>
+                        </li>
+                       <!-- <li>
+                            <span class="bk-item-name">内存:</span><span>40G</span>
+                        </li>-->
+                        <li>
+                            <span class="bk-item-name">时长:</span><span>{{formdata.monthCount}}个月</span>
+                        </li>
+                        <li>
+                            <span class="bk-item-name">购买量:</span><span>{{formdata.count}}台</span>
+                        </li>
+                    </ul>
+                    <div class="bk-items-price">
+                        <h4 class="right-title">本次需付费:</h4>
+                        <div class="price-settle">
+                            <span>¥</span>
+                            <span>327.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="modal-footer">
+        <button class="btn btn-dark" type="submit" ng-show="!editData||!formDisabled">确定</button>
+        <button class="btn btn-default" type="button" ng-click="cancel()">关闭</button>
+    </div>-->
+</form>

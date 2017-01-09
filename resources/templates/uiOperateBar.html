@@ -1,0 +1,51 @@
+<div class="operateBtns clearfix wrapper no-padding-bottom">
+    <div ng-repeat="element in options.elements" class="fl m-r-sm">
+        <div class="" ng-if="element.type == 'button'">
+            <button class="btn btn-sm {{element.class}}" type="element.type"
+                    ng-click="element.events.clicker(options,element)">
+                <i class="fa fa-{{element.icon}}"></i>
+                {{element.name}}
+            </button>
+        </div>
+
+        <div class="" ng-if="element.type == 'file'">
+            <button class="btn btn-sm {{element.class}}" type="element.type"
+                    ngf-select="element.events.uploadFiles($files)" multiple="multiple" ngf-drop="uploadFiles($files)" ngf-max-size="500MB">
+                <i class="fa fa-{{element.icon}}"></i>
+                {{element.name}}
+            </button>
+        </div>
+
+        <div class="input-group w-md" ng-if="element.type == 'search'">
+            <input type="text" ng-model="element.value"
+                   class="form-control input-sm bg-light no-border rounded padder ng-pristine ng-valid ng-touched {{element.class}}"
+                   placeholder="{{element.placeholder}}" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-34-8309">
+                <span class="input-group-btn" ng-click="element.events.submitter(element.value)">
+                    <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+                </span>
+        </div>
+
+        <div class="input-group w-md" ng-if="element.type == 'daterange'">
+            <input date-range-picker class="form-control date-picker" style="height: 31px;" type="text" placeholder="{{element.placeholder}}" ng-model="options.data"
+                   min="element.minDate" max="element.maxDate"/>
+        </div>
+
+        <div class="btn-group dropdown" dropdown="" ng-if="element.type == 'dropdown'">
+            <button class="btn btn-dark btn-sm" dropdown-toggle="" aria-haspopup="true" aria-expanded="false">{{element.name}} <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="" ng-click="element.events.chooser(item.name,item.value,item,element);element.name = item.name" ng-repeat="item in element.items">{{item.name}}</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown-more dropdown" dropdown="" ng-if="element.type == 'buttons'">
+            <button class="btn btn-dark btn-sm" dropdown-toggle="" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-{{element.icon}}"></i> {{element.name}} <span class="fa fa-caret-down" style="margin-left: 15px !important;"></span></button>
+            <ul class="dropdown-menu dropdown-content">
+                <li ng-repeat="item in element.items" ng-class="{'btn-forbidden':item.disabled}" ng-click="item.events.clicker(item.value)">
+                    <button href="" class="text-sm" ng-disabled="item.disabled"><i class="fa fa-{{item.icon}}"></i>{{item.name}}</button>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

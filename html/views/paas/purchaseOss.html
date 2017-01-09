@@ -1,0 +1,207 @@
+<div class="bg-light lter b-b wrapper-md clearfix titleBtns">
+    <h2 class="m-n font-thin h4 pull-left">数据库 > 购买OSS</h2>
+</div>
+
+
+<div class="wrapper-md">
+    <form novalidate name="formData" ng-submit="submitFormData()">
+
+        <div class="row">
+            <div class="col-md-10 col-sm-10">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="panel panel-default">
+                            <dl class="bk-group">
+                                <dt class="bk-title">
+                                    <span>基</span>
+                                    <span>本</span>
+                                    <span>配</span>
+                                    <span>置</span>
+                                </dt>
+                                <dd class="bk-detail">
+                                    <div class="form-group row">
+                                        <div class="wrap-title col-md-2">资源包类型:</div>
+                                        <div class="form-control1 col-md-10">
+                                            <div class="wrap">
+                                                <span>
+                                                    <input type="radio" id="radio_1" name="region" class="chk_1" value="存储包" ng-model="data.resource"/>
+                                                    <label for="radio_1">存储包</label>
+                                                </span>
+                                                <span>
+                                                    <input type="radio" id="radio_2" name="region" class="chk_1" value="下行流量包" ng-model="data.resource"/>
+                                                    <label for="radio_2">下行流量包</label>
+                                                </span>
+                                                <span>
+                                                    <input type="radio" id="radio_3" name="region" class="chk_1" value="回源流量包" ng-model="data.resource"/>
+                                                    <label for="radio_3">回源流量包</label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="wrap-title col-md-2">地域:</div>
+                                        <div class="form-control1 col-md-10">
+                                            <div class="wrap">
+                                                <span>
+                                                    <input type="radio" id="radio_4" name="version" class="chk_1" value="华东 2" ng-model="data.region"/>
+                                                    <label for="radio_4">华东 2</label>
+                                                </span>
+                                                <span>
+                                                    <input type="radio" id="radio_5" name="version" class="chk_1" value="华东 1" ng-model="data.region"/>
+                                                    <label for="radio_5">华东 1</label>
+                                                </span>
+                                                <span>
+                                                    <input type="radio" id="radio_6" name="version" class="chk_1" value="华南 1" ng-model="data.region"/>
+                                                    <label for="radio_6">华南 1</label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="wrap-title col-md-2">存储包规格:</div>
+                                        <div class="form-control1 col-md-10">
+                                            <div class="wrap">
+                                                <span>
+                                                    <input type="radio" id="radio_7" name="version" class="chk_1" value="40GB" ng-model="data.guige"/>
+                                                    <label for="radio_7">40GB</label>
+                                                </span>
+                                                <span>
+                                                    <input type="radio" id="radio_8" name="version" class="chk_1" value="100GB" ng-model="data.guige"/>
+                                                    <label for="radio_8">100GB</label>
+                                                </span>
+                                                <span>
+                                                    <input type="radio" id="radio_9" name="version" class="chk_1" value="1TB" ng-model="data.guige"/>
+                                                    <label for="radio_9">1TB</label>
+                                                </span>
+                                                <span>
+                                                    <input type="radio" id="radio_10" name="version" class="chk_1" value="2TB" ng-model="data.guige"/>
+                                                    <label for="radio_10">2TB</label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="wrap-title col-md-2">套餐:</div>
+                                        <div class="form-control1 col-md-10">
+                                            <div class="wrap">
+                                                <span>
+                                                    <input type="radio" id="radio_11" name="version" class="chk_1" value="上海存储包"/>
+                                                    <label for="radio_11">上海存储包</label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="panel panel-default">
+                            <dl class="bk-group">
+                                <dt class="bk-title">
+                                    <span>购</span>
+                                    <span>买</span>
+                                    <span>量</span>
+                                </dt>
+                                <dd class="bk-detail">
+                                    <div class="form-group row">
+                                        <div class="wrap-title col-md-2">购买时长:</div>
+                                        <div class="form-control1 col-md-10">
+                                            <div class="wrap">
+                                                <span>
+                                                    <input type="radio" id="radio_12" name="region" class="chk_1" value="半年" ng-model="data.time"/>
+                                                    <label for="radio_12">半年</label>
+                                                </span>
+                                                <span>
+                                                    <input type="radio" id="radio_13" name="region" class="chk_1" value="一年" ng-model="data.time"/>
+                                                    <label for="radio_13">一年</label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="wrap-title col-md-2">开通时间选择:</div>
+                                        <div class="form-control1 col-md-3">
+                                            <div class="input-group">
+                                                <ui-select ng-model="dbFormGrid.queryParams[field.name]" theme="bootstrap">
+                                                    <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="item in field.dropDownItemValue">
+                                                        <div ng-bind-html="item.name"></div>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                                <span class="input-group-btn">
+                                          <button ng-click="dbFormGrid.queryParams[field.name] = [{name: '请选择', value: ''}]"
+                                                  class="btn btn-default" type="button">
+                                              <span class="glyphicon glyphicon-trash"></span>
+                                          </button>
+                                        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-sm-2 pull-right" style="padding-left: 0;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        当前配置
+                    </div>
+                    <div class="panel-body">
+                        <ul class="bk-items-list">
+                            <li>
+                                <span class="bk-item-name">配置:</span><span>北京 可用区A</span>
+                            </li>
+                            <li>
+                                <span class="bk-item-name">版本:</span><span>5.5</span>
+                            </li>
+                            <li>
+                                <span class="bk-item-name">存储:</span><span>100G</span>
+                            </li>
+                            <li>
+                                <span class="bk-item-name">内存:</span><span>40G</span>
+                            </li>
+                            <li>
+                                <span class="bk-item-name">时长:</span><span>6个月</span>
+                            </li>
+                            <li>
+                                <span class="bk-item-name">购买量:</span><span>2台</span>
+                            </li>
+                        </ul>
+                        <div class="bk-items-price">
+                            <div class="price-title">配置费用:</div>
+                            <div class="price-settle">
+                                <span>¥</span>
+                                <span>327.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer" style="text-align: center">
+                        <button type="button" class="btn btn-dark" ng-click="gotoBucket()">立即购买</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="row">
+            <div class="col-md-10" style="text-align: center;">
+                <button type="button" class="btn btn-default" style="margin-right: 10px;">返回</button>
+                &lt;!&ndash;<button type="submit" class="btn btn-dark">立即购买</button>&ndash;&gt;
+            </div>
+        </div>-->
+
+    </form>
+</div>

@@ -1,0 +1,45 @@
+<div class="bg-light lter b-b wrapper-md clearfix titleBtns">
+    <h2 class="m-n font-thin h4 pull-left">项目管理 > 新建项目 > zhugeDemo</h2>
+</div>
+
+<div class="wrapper-md">
+
+    <div class="panel panel-default form-horizontal form" role="form">
+        <div class="panel-heading">
+            查询条件
+        </div>
+        <div class="panel-body">
+            <div class="row wrapper">
+                <div class="col-md-10 clearfloat">
+                    <div class="labels fl" style="margin-right: 10px;font-weight: bold;font-size: 16px;">自定义筛选:</div>
+                    <div class="tiaojiancont fl" style="font-size: 14px;">
+                        <span class="toConditionTxt" style="margin-right: 15px;color: #666;" ng-show="uiFilters.showConTxt">
+                            <span ng-repeat="item in uiFilters.datas">
+                                <span class="word" ng-show="item.showAndlabel">且</span>
+                                (
+                                <span ng-repeat="subItem in item.relation">
+                                    <span class="word" ng-show="subItem.showOrlabel">或者</span>
+                                    <span class="bg-blue">
+                                        <b style="font-size: 16px;color: #333;">{{subItem.oneSelectModal.label}} {{subItem.twoSelectModal.label}} {{subItem.three.type ? ((subItem.three.type == 'text'||subItem.three.type == 'number')?subItem.three.condModal2:(subItem.three.type == 'dateRange'?(':'+subItem.three.date.startDate +'-'+ subItem.three.date.endDate):(subItem.three.num.startNum+'-'+subItem.three.num.endNum))):''}} </b>
+                                    </span>
+                                </span>
+                                )
+                            </span>
+                        </span>
+
+                        <ui-filters></ui-filters>
+
+                        <span style="cursor: pointer;" class="btnDel fa fa-trash" ng-show="uiFilters.showDel" ng-click="uiFilters.clearData()"></span>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center" style="margin-bottom:0px;">
+                    <button type="button" ng-click="getQueryParams()" class="btn btn-dark">
+                        <i class="fa fa-search"></i>查询
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
